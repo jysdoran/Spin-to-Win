@@ -13,13 +13,14 @@ public class AthleteBrain: MonoBehaviour
     public GameObject opponent;
     public float baseHealth;
     public float abilityPower;
-    public string name;
+    public string title;
     public bool anchored;
     public float currentHealth;
     public float baseMass;
     public bool useAbility;
     public string id;
     public int number;
+    public bool ai;
     float abilityTimer;
     float usedTimer;
     Vector2 direc;
@@ -34,6 +35,13 @@ public class AthleteBrain: MonoBehaviour
         currentSpeed = baseSpeed;
         currentHealth = baseHealth;
         abilityTimer = abilityCooldown;
+        if (ai)
+        {
+            gameObject.AddComponent<AIMovement>();
+        } else
+        {
+            gameObject.AddComponent<PlayerMovement>();
+        }
     }
 
     void Update()
@@ -47,9 +55,10 @@ public class AthleteBrain: MonoBehaviour
             UseAbility();
             abilityTimer = abilityCooldown;
         
-        } else
+        } else if (abilityTimer > 0)
         {
             abilityTimer -= Time.deltaTime;
+            
         }
     }
 

@@ -100,7 +100,7 @@ public class matchControl : MonoBehaviour {
         int abilityType = (int)Mathf.Floor(Random.value * 5f);
         float baseMass = Random.value * 2.5f;
         float abilityPower = Random.value + 0.5f;
-        string name = GenerateAthleteName();
+        string title = GenerateAthleteName();
         float abilityCooldown = (Random.value * 3) + 1;
         Color mainColor = new Color(Random.value, Random.value, Random.value, 1.0f);
         Color frontColor = new Color((1 - mainColor.r) + ((Random.value * 0.1f) - 0.2f), (1 - mainColor.g) + ((Random.value * 0.1f) - 0.2f), (1 - mainColor.b) + ((Random.value * 0.1f) - 0.2f), 1.0f);
@@ -122,7 +122,7 @@ public class matchControl : MonoBehaviour {
         champ.transform.GetChild(0).GetComponent<SpriteRenderer>().color = new Color(float.Parse(splitID[8]), float.Parse(splitID[9]), float.Parse(splitID[10]), 1.0f);
         champ.GetComponent<Rigidbody2D>().mass = champ.GetComponent<AthleteBrain>().baseMass;
         champ.GetComponent<AthleteBrain>().goal = centre;
-        champ.GetComponent<AthleteBrain>().name = splitID[11].Replace("-", " ");
+        champ.GetComponent<AthleteBrain>().title = splitID[11].Replace("-", " ");
         champ.name = splitID[11].Replace("-"," ") + "  Ability: " + champ.GetComponent<AthleteBrain>().abilityType;
         champ.GetComponent<AthleteBrain>().id = id;
         return champ ;
@@ -155,34 +155,6 @@ public class matchControl : MonoBehaviour {
         athlete2.GetComponent<AthleteBrain>().goal = GameObject.Find("Goal");
         athlete1.GetComponent<AthleteBrain>().number = num1;
         athlete2.GetComponent<AthleteBrain>().number = num2;
-        /*switch (type)
-        {
-            case 0:
-                GameObject champ = (GameObject)Instantiate(Resources.Load("Athlete"));
-                champ.transform.position = new Vector3(2.2f, 2.5f, 0);
-                champ.GetComponent<AthleteBrain>().baseSpeed = (Random.value * 10) + 5;
-                champ.GetComponent<AthleteBrain>().abilityType = (int) Mathf.Floor(Random.value*5f);
-                champ.GetComponent<AthleteBrain>().baseMass = Random.value * 2.5f;
-                champ.GetComponent<AthleteBrain>().abilityPower = Random.value+0.5f;
-                champ.GetComponent<Rigidbody2D>().mass = champ.GetComponent<AthleteBrain>().baseMass;
-                champ.GetComponent<AthleteBrain>().abilityCooldown = (Random.value * 3)+1;
-                champ.GetComponent<AthleteBrain>().goal = GameObject.Find("Goal");
-                champ.name = "Athlete:" + champ.GetComponent<AthleteBrain>().abilityType;
-
-                GameObject champ2 = (GameObject)Instantiate(Resources.Load("Athlete"));
-                champ2.transform.position = new Vector3(0, -2.8f, 0);
-                champ2.GetComponent<AthleteBrain>().baseSpeed = (Random.value * 10) + 5;
-                champ2.GetComponent<AthleteBrain>().abilityType = (int)Mathf.Floor(Random.value * 5f);
-                champ2.GetComponent<AthleteBrain>().baseMass = Random.value * 2.5f;
-                champ2.GetComponent<AthleteBrain>().abilityPower = Random.value + 0.5f;
-                champ2.GetComponent<Rigidbody2D>().mass = champ2.GetComponent<AthleteBrain>().baseMass;
-                champ2.GetComponent<AthleteBrain>().abilityCooldown = (Random.value * 3) + 1;
-                champ2.GetComponent<AthleteBrain>().goal = GameObject.Find("Goal");
-                champ2.name = "Athlete: " + champ2.GetComponent<AthleteBrain>().abilityType;
-
-                champ2.GetComponent<AthleteBrain>().opponent = champ;
-                champ.GetComponent<AthleteBrain>().opponent = champ2;
-                break;
-                */
+        athlete1.GetComponent<AthleteBrain>().ai = false;
     }
 }
