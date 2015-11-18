@@ -13,6 +13,7 @@ public class matchControl : MonoBehaviour {
     public string[] nameStarts;
     public string[] nameMiddles;
     public string[] nameEnds;
+    public int king;
 
     GameObject centre;
     // Use this for initialization
@@ -61,6 +62,7 @@ public class matchControl : MonoBehaviour {
         StartMatch(matchType);
 
         centre = GameObject.Find("Goal");
+        king = -1;
     }
 
     void Update ()
@@ -71,6 +73,7 @@ public class matchControl : MonoBehaviour {
             Debug.Log("Draw!");
             Destroy(athlete1);
             Destroy(athlete2);
+            king = -1;
             StartMatch(0);
             matchTimer = 0;
         }
@@ -127,18 +130,31 @@ public class matchControl : MonoBehaviour {
 
     public void StartMatch(int type)
     {
-        string athleteID1 = athleteIDs[(int)Mathf.Floor(Random.value * athleteAmount)];
+        int num1 = (int)Mathf.Floor(Random.value * athleteAmount);
+        string athleteID1 = athleteIDs[num1];
         string athleteID2;
-        do
+        int num2;
+        if (king >= 0)
         {
-            athleteID2 = athleteIDs[(int)Mathf.Floor(Random.value * athleteAmount)];
-        } while (athleteID2 == athleteID1);
+            athleteID2 = athleteIDs[king];
+            num2 = king;
+        }
+        else
+        {
+            do
+            {
+                num2 = (int)Mathf.Floor(Random.value * athleteAmount);
+                athleteID2 = athleteIDs[num2];
+            } while (athleteID2 == athleteID1);
+        }
         athlete1 = InitialiseAthleteFromID(athleteID1, new Vector3(2.2f, 2.5f, 0));
         athlete2 = InitialiseAthleteFromID(athleteID2, new Vector3(0, -2.8f, 0));
         athlete1.GetComponent<AthleteBrain>().opponent = athlete2;
         athlete2.GetComponent<AthleteBrain>().opponent = athlete1;
         athlete1.GetComponent<AthleteBrain>().goal = GameObject.Find("Goal");
         athlete2.GetComponent<AthleteBrain>().goal = GameObject.Find("Goal");
+        athlete1.GetComponent<AthleteBrain>().number = num1;
+        athlete2.GetComponent<AthleteBrain>().number = num2;
         /*switch (type)
         {
             case 0:

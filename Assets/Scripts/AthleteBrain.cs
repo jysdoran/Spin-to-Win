@@ -19,6 +19,7 @@ public class AthleteBrain: MonoBehaviour
     public float baseMass;
     public bool useAbility;
     public string id;
+    public int number;
     float abilityTimer;
     float usedTimer;
     Vector2 direc;
