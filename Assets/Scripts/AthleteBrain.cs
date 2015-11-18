@@ -100,12 +100,7 @@ public class AthleteBrain: MonoBehaviour
                 anchored = true;
                 break;
             case 4:
-                if (Vector3.Distance(transform.position, Vector3.zero) > Vector3.Distance(opponent.transform.position, Vector3.zero))
-                {
-                    transform.position = new Vector3((Random.value * 2f) - 2f, (Random.value * 2f) - 2f, 0f);
-                }
-                rbody.velocity = Vector3.zero;
-                rbody.AddForce(rbody.mass * direc * currentSpeed*2);
+                rbody.mass *= (abilityPower * 10) + 0.5f;
                 break;
             default:
                 break;
