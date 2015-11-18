@@ -104,7 +104,7 @@ public class matchControl : MonoBehaviour {
         float abilityCooldown = (Random.value * 3) + 1;
         Color mainColor = new Color(Random.value, Random.value, Random.value, 1.0f);
         Color frontColor = new Color((1 - mainColor.r) + ((Random.value * 0.1f) - 0.2f), (1 - mainColor.g) + ((Random.value * 0.1f) - 0.2f), (1 - mainColor.b) + ((Random.value * 0.1f) - 0.2f), 1.0f);
-        string id = baseSpeed + " " + abilityType + " " + baseMass + " " + abilityPower + " " + abilityCooldown + " " + mainColor.r + " " + mainColor.g + " " + mainColor.b + " " + frontColor.r + " " + frontColor.g + " " + frontColor.b + " " + name;
+        string id = baseSpeed + " " + abilityType + " " + baseMass + " " + abilityPower + " " + abilityCooldown + " " + mainColor.r + " " + mainColor.g + " " + mainColor.b + " " + frontColor.r + " " + frontColor.g + " " + frontColor.b + " " + title;
         return id;
     }
 

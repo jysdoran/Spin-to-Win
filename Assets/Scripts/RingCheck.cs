@@ -14,7 +14,7 @@ public class RingCheck : MonoBehaviour {
     void OnTriggerExit2D(Collider2D other)
     {
         //other.gameObject.GetComponent<AthleteMovement>().currentHealth -= ringDamage;
-        Debug.Log("KO!: "+other.gameObject.GetComponent<AthleteBrain>().opponent.GetComponent<AthleteBrain>().name+" Wins!");
+        Debug.Log("KO!: "+other.gameObject.GetComponent<AthleteBrain>().opponent.GetComponent<AthleteBrain>().title+" Wins!");
 
         mc.king = other.gameObject.GetComponent<AthleteBrain>().opponent.GetComponent<AthleteBrain>().number;
 
